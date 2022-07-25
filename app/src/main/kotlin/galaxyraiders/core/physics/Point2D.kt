@@ -1,13 +1,17 @@
-@file:Suppress("UNUSED_PARAMETER") // <- REMOVE
 package galaxyraiders.core.physics
+import java.lang.Math
 
-data class Point2D(val x: Double, val y: Double) {
-  operator fun plus(p: Point2D): Point2D {
-    return INVALID_POINT
+data class Point2D (val x: Double, val y: Double) {
+  //x e y são as coordenadas no plano cartesiano
+  //private val initialx = x
+  //private val initialy = y
+
+  operator fun plus (p: Point2D): Point2D {
+    return Point2D (x + p.x, y + p.y)
   }
 
-  operator fun plus(v: Vector2D): Point2D {
-    return INVALID_POINT
+  operator fun plus (v: Vector2D): Point2D {
+    return Point2D (x + v.dx, y + v.dy)
   }
 
   override fun toString(): String {
@@ -15,26 +19,27 @@ data class Point2D(val x: Double, val y: Double) {
   }
 
   fun toVector(): Vector2D {
-    return INVALID_VECTOR
+    return Vector2D (x, y)
+    //eu acredito que isso seja um vetor com uma ponta na origem e outra no ponto
   }
 
   fun impactVector(p: Point2D): Vector2D {
-    return INVALID_VECTOR
+    return Vector2D (Math.abs (x - p.x), Math.abs (y - p.y))
   }
 
   fun impactDirection(p: Point2D): Vector2D {
-    return INVALID_VECTOR
+    return impactVector (p).unit
   }
 
   fun contactVector(p: Point2D): Vector2D {
-    return INVALID_VECTOR
+    return impactVector (p).normal
   }
 
   fun contactDirection(p: Point2D): Vector2D {
-    return INVALID_VECTOR
+    return contactVector (p).unit
   }
 
   fun distance(p: Point2D): Double {
-    return INVALID_DOUBLE
+    return Math.hypot (x - p.x, y - p.y)
   }
 }
