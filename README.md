@@ -1,3 +1,6 @@
+I'll be impressed if this damn thing even bothers to run properly, let alone compile.
+I did my best
+
 # Galaxy Raiders
 
 Template for the project of the course [MAC0218 - Programming Techniques II][1]
