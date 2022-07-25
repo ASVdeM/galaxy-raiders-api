@@ -89,8 +89,13 @@ class GameEngine(
         (first, second) ->
       if (first.impacts(second)) {
         first.collideWith(second, GameEngineConfig.coefficientRestitution)
+        if ((first.type == "Missile" && second.type == "Asteroid") ||
+            (first.type == "Asteroid" && second.type == "Missile")){
+            this.field.generateExplosion (first.initialPosition)
+        }
       }
     }
+    this.field.clearExplosions ()
   }
 
   fun moveSpaceObjects() {
