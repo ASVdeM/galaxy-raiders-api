@@ -1,5 +1,6 @@
 I'll be impressed if this damn thing even bothers to run properly, let alone compile.
-I did my best
+
+I did my best anyway.
 
 # Galaxy Raiders
 
